@@ -8,7 +8,7 @@
 
 })();
 
-
+// Hidding all buttons and fields for the View function
 const showView = function() {
     $(`.inputFields`).hide();
     $(`#addButton`).hide();
@@ -61,7 +61,6 @@ const showUpdateInput = function() {
 
 
 
-
 //  Render all of the employee information in `employeeList` individually in paragraph tags to the div with the class `content`.
 const render = function () {
     $('.content').empty();
@@ -82,7 +81,7 @@ $('#view').on('click', render);
 
 
 
-// how do I create / incorperate the Add screen to get the name to append to the object?
+
 //  When the add button is pressed, use the `val` function to get the value of the user input and and add that name to the list. Re-render the list.
 const getInputVal = function () {
     const nameVal = $('#nameInp').val();
@@ -166,28 +165,6 @@ const updateName = function() {
 
   $(`#update`).on(`click`, showUpdateInput);
   $('#updateButton').on('click', updateName);
-
-
-
-// *** added this code to supprt show and hide functions.  This is fom the homework video.  Will need to update what is shown or hidden.
-
-    // Hides the About
-// (function() {
-//     $('about').hide();
-// })();
-
-    // Hides Homepage and shows about
-// const showAbout = function() {
-//     $('#homepage').hide();
-//     $('about').show();
-// };
-
-
-
-
-
-
-
 
 
 
