@@ -64,14 +64,14 @@ const $ = function (selector) {
   }
 
   // I added this
-  const hide = function() {
+  const show = function() {
     for (let i = 0; i < nodeList.length; i++) {
       nodeList[i].style.display = '';
     }
   }
 
   // I added this
-  const show = function() {
+  const hide = function() {
     for (let i = 0; i < nodeList.length; i++) {
       nodeList[i].style.display = 'none';
     }

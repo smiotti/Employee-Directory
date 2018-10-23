@@ -26,6 +26,22 @@ body {
     color: #f1f1f1;
 }
 
+
+.empPhoto {
+    height: 40px;
+    width: 40px;
+    margin-left:35px;
+    margin-bottom: 10px;
+    
+}
+
+.buttons {
+ margin-top: 10px;
+ margin-bottom: 20px;
+}
+
+
+
 .main {
     margin-left: 225px; /* Same as the width of the sidenav */
     margin-top: 20px;
