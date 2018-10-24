@@ -74,7 +74,7 @@ const render = function () {
 
 render();
 
-
+// Listening for user to click the View menu option and then render the employee list.
 $('#view').on('click', showView);
 $('#view').on('click', render);
 
@@ -82,30 +82,28 @@ $('#view').on('click', render);
 
 
 
+
 //  When the add button is pressed, use the `val` function to get the value of the user input and and add that name to the list. Re-render the list.
-// const getInputVal = function () {
-//     const nameVal = $('#nameInp').val();
-// employeeList.push(nameVal);
-
-
-// testing
 const getInputVal = function () {
+    // Delaring newEmployee object elements that will be used to gather user imput and then add to the Employee list.
     const newEmployee = {
         name: '',
         officeNum: '',
         phoneNum: ''
     };
 
+    // Gathering user input.
     const nameVal = $('#nameInp').val();
     const officeVal = $('#officeNumInp').val();
     const phoneVal = $('#phoneNumInp').val();
     
+    // Assigning user input to newEmployee object.
     newEmployee.name = nameVal;
     newEmployee.officeNum = officeVal ;
     newEmployee.phoneNum = phoneVal;
 
+    // Adding the new employee infomation to the employee list.
     employeeList.push(newEmployee);
-
 
     // After performing our actions, clear the input values and re-render the list
     $('#nameInp').val('');
@@ -114,19 +112,39 @@ const getInputVal = function () {
     render();
 
 }
-
+// Listening for user to click the Add menu option.
 $(`#add`).on(`click`, showAddInput);
+// Listening for the user to push the Add buttom.
 $('#addButton').on('click', getInputVal);
+
+
 
 
 
 //  When the delete button is pressed, delete the element from employeeList that matches the name the user entered in the input field. Re-render the list.
 const removeName = function () {
+    // Gathering user input.
     const nameVal = $('#nameInp').val();
+    // const officeVal = $('#officeNumInp').val();
+    // const phoneVal = $('#phoneNumInp').val();
+    
 
+    for (let i = 0; i < employeeList.length; i++) {
+        if (employeeList[i].name === nameVal) {
+          employeeList.splice(i, 1);
+          
+        }    
+    }   
+    
     // We use the indexOf method to find the index of the input name
     // Then we use splice to remove 1 element, starting with that index
-    employeeList.splice(employeeList.indexOf(nameVal), 1);
+    // employeeList.splice(employeeList.indexOf(nameVal), 1);  Why does this not returns correct index???
+
+
+
+    // employeeList.splice(employeeList.indexOf(officeVal), 1);
+    // employeeList.splice(employeeList.indexOf(phoneVal), 1);
+
 
     // After performing our actions, clear the input values and re-render the list
     $('#nameInp').val('');
@@ -136,16 +154,47 @@ const removeName = function () {
 
 }
 
+// Listening for user to click the Delete menu option.
 $(`#delete`).on(`click`, showDelInput);
+// Listening for the user to push the Delete buttom.
 $('#deleteButton').on('click', removeName);
 
 
 
 
-//  When the Verify button is pressed,  check to see if the name the user entered is in the employee List.
 
+
+//  When the Verify button is pressed,  check to see if the name the user entered is in the employee List.
 const verifyName = function () {
+    // Gathering user input.
     const nameVal = $('#nameInp').val();
+    // const officeVal = $('#officeNumInp').val();
+    // const phoneVal = $('#phoneNumInp').val();
+      // If our studentList includes the input value, add blue class to the body
+    
+      if(employeeList.includes(nameVal)) {
+        $('main').addClass('blue');
+    }    
+
+
+
+
+
+
+
+    // for (let i = 0; i < employeeList.length; i++) {
+    //     if (employeeList[i].name === nameVal) {
+    //         console.log('yes');
+    //     else {
+    //         console.log('No');
+    //     }
+            
+    //     }    
+    // }   
+    
+
+
+
 
     // We use the indexOf method to find the index of the input name
     // Then we use splice to remove 1 element, starting with that index
@@ -157,7 +206,7 @@ const verifyName = function () {
     render();
 
 }
-
+// Listening for user to click the Verify menu option.
 $(`#verify`).on(`click`, showVerifyInput);
 $('#verifyButton').on('click', verifyName);
 
@@ -165,9 +214,9 @@ $('#verifyButton').on('click', verifyName);
 
 
 
+
 //  When the Update button is pressed, allows the user to input name, office number, and phone number and then update the office number and phone number 
 //  of the employee that matches the input name, and then renders the updated employee list.
-
 const updateName = function () {
     const nameVal = $('#nameInp').val();
 
@@ -181,7 +230,7 @@ const updateName = function () {
     render();
 
 }
-
+// Listening for user to click the Update menu option.
 $(`#update`).on(`click`, showUpdateInput);
 $('#updateButton').on('click', updateName);
 
