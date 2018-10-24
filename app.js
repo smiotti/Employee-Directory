@@ -1,4 +1,4 @@
-(function() {
+(function () {
     $(`.inputFields`).hide();
     $(`#addButton`).hide();
     $(`#deleteButton`).hide();
@@ -9,7 +9,7 @@
 })();
 
 // Hidding all buttons and fields for the View function
-const showView = function() {
+const showView = function () {
     $(`.inputFields`).hide();
     $(`#addButton`).hide();
     $(`#deleteButton`).hide();
@@ -17,10 +17,10 @@ const showView = function() {
     $(`#verifyButton`).hide();
     $(`#updateButton`).hide();
 
-};    
+};
 
 // Showing the Add function button and fields
-const showAddInput = function() {
+const showAddInput = function () {
     $(`.inputFields`).show();
     $(`#addButton`).show();
     $(`#deleteButton`).hide();
@@ -30,7 +30,7 @@ const showAddInput = function() {
 };
 
 // Showing the Delete function button and fields
-const showDelInput = function() {
+const showDelInput = function () {
     $(`.inputFields`).show();
     $(`#deleteButton`).show();
     $(`#addButton`).hide();
@@ -39,7 +39,7 @@ const showDelInput = function() {
 };
 
 // Showing the Verify function button and fields
-const showVerifyInput = function() {
+const showVerifyInput = function () {
     $(`.inputFields`).show();
     $(`#verifyButton`).show();
     $(`#deleteButton`).hide();
@@ -49,7 +49,7 @@ const showVerifyInput = function() {
 
 
 // Showing the Update function button and fields
-const showUpdateInput = function() {
+const showUpdateInput = function () {
     $(`.inputFields`).show();
     $(`#updateButton`).show();
     $(`#deleteButton`).hide();
@@ -83,17 +83,36 @@ $('#view').on('click', render);
 
 
 //  When the add button is pressed, use the `val` function to get the value of the user input and and add that name to the list. Re-render the list.
+// const getInputVal = function () {
+//     const nameVal = $('#nameInp').val();
+// employeeList.push(nameVal);
+
+
+// testing
 const getInputVal = function () {
+    const newEmployee = {
+        name: '',
+        officeNum: '',
+        phoneNum: ''
+    };
+
     const nameVal = $('#nameInp').val();
-    employeeList.push(nameVal);
-  
+    const officeVal = $('#officeNumInp').val();
+    const phoneVal = $('#phoneNumInp').val();
+    
+    newEmployee.name = nameVal;
+    newEmployee.officeNum = officeVal ;
+    newEmployee.phoneNum = phoneVal;
+
+    employeeList.push(newEmployee);
+
 
     // After performing our actions, clear the input values and re-render the list
     $('#nameInp').val('');
     $('#officeNumInp').val('');
     $('#phoneNumInp').val('');
     render();
-    
+
 }
 
 $(`#add`).on(`click`, showAddInput);
@@ -102,46 +121,46 @@ $('#addButton').on('click', getInputVal);
 
 
 //  When the delete button is pressed, delete the element from employeeList that matches the name the user entered in the input field. Re-render the list.
-const removeName = function() {
+const removeName = function () {
     const nameVal = $('#nameInp').val();
-  
+
     // We use the indexOf method to find the index of the input name
     // Then we use splice to remove 1 element, starting with that index
     employeeList.splice(employeeList.indexOf(nameVal), 1);
-  
+
     // After performing our actions, clear the input values and re-render the list
     $('#nameInp').val('');
     $('#officeNumInp').val('');
     $('#phoneNumInp').val('');
     render();
 
-  }
+}
 
-  $(`#delete`).on(`click`, showDelInput);
-  $('#deleteButton').on('click', removeName);
-  
+$(`#delete`).on(`click`, showDelInput);
+$('#deleteButton').on('click', removeName);
+
 
 
 
 //  When the Verify button is pressed,  check to see if the name the user entered is in the employee List.
 
-const verifyName = function() {
+const verifyName = function () {
     const nameVal = $('#nameInp').val();
-  
+
     // We use the indexOf method to find the index of the input name
     // Then we use splice to remove 1 element, starting with that index
 
     // employeeList.splice(employeeList.indexOf(nameVal), 1);
-  
+
     // After performing our actions, clear the input values and re-render the list
     $('#nameInp').val('');
     render();
 
 }
 
-  $(`#verify`).on(`click`, showVerifyInput);
-  $('#verifyButton').on('click', verifyName);
-  
+$(`#verify`).on(`click`, showVerifyInput);
+$('#verifyButton').on('click', verifyName);
+
 
 
 
@@ -149,22 +168,22 @@ const verifyName = function() {
 //  When the Update button is pressed, allows the user to input name, office number, and phone number and then update the office number and phone number 
 //  of the employee that matches the input name, and then renders the updated employee list.
 
-const updateName = function() {
+const updateName = function () {
     const nameVal = $('#nameInp').val();
-  
+
     // We use the indexOf method to find the index of the input name
     // Then we use splice to remove 1 element, starting with that index
 
     // employeeList.splice(employeeList.indexOf(nameVal), 1);
-  
+
     // After performing our actions, clear the input values and re-render the list
     $('#nameInp').val('');
     render();
 
 }
 
-  $(`#update`).on(`click`, showUpdateInput);
-  $('#updateButton').on('click', updateName);
+$(`#update`).on(`click`, showUpdateInput);
+$('#updateButton').on('click', updateName);
 
 
 
