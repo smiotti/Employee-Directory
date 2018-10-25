@@ -16,26 +16,36 @@ const showView = function () {
     $(`#searchButton`).hide();
     $(`#verifyButton`).hide();
     $(`#updateButton`).hide();
+    $(`.verifyId`).hide();
+
 
 };
 
 // Showing the Add function button and fields
 const showAddInput = function () {
     $(`.inputFields`).show();
+    $(`#nameInp`).show();
+    $(`#officeNumInp`).show();
+    $(`#phoneNumInp`).show();
     $(`#addButton`).show();
     $(`#deleteButton`).hide();
     $(`#verifyButton`).hide();
     $(`#updateButton`).hide();
+    $(`.verifyId`).hide();
 
 };
 
 // Showing the Delete function button and fields
 const showDelInput = function () {
     $(`.inputFields`).show();
+    $(`#nameInp`).show();
+    $(`#officeNumInp`).hide();
+    $(`#phoneNumInp`).hide();
     $(`#deleteButton`).show();
     $(`#addButton`).hide();
     $(`#verifyButton`).hide();
     $(`#updateButton`).hide();
+    $(`.verifyId`).hide();
 };
 
 // Showing the Verify function button and fields
@@ -45,6 +55,10 @@ const showVerifyInput = function () {
     $(`#deleteButton`).hide();
     $(`#addButton`).hide();
     $(`#updateButton`).hide();
+    $(`#officeNumInp`).hide();
+    $(`#phoneNumInp`).hide();
+    $(`.verifyId`).show();
+    
 };
 
 
@@ -55,15 +69,17 @@ const showUpdateInput = function () {
     $(`#deleteButton`).hide();
     $(`#addButton`).hide();
     $(`#verifyButton`).hide();
+    $(`.verifyId`).hide();
 };
 
 
 
 
 
-//  Render all of the employee information in `employeeList` individually in paragraph tags to the div with the class `content`.
+//  // When the View button is pressed or 'render is called, display all of the employee information in `employeeList` individually in paragraph tags to the div with the class `content`.
 const render = function () {
     $('.content').empty();
+    $('.verifyId').empty();
 
     for (let i = 0; i < employeeList.length; i++) {
         $('.content').append(`<hr><p>${employeeList[i].name}</p>`);
@@ -135,16 +151,7 @@ const removeName = function () {
           
         }    
     }   
-    
-    // We use the indexOf method to find the index of the input name
-    // Then we use splice to remove 1 element, starting with that index
-    // employeeList.splice(employeeList.indexOf(nameVal), 1);  Why does this not returns correct index???
-
-
-
-    // employeeList.splice(employeeList.indexOf(officeVal), 1);
-    // employeeList.splice(employeeList.indexOf(phoneVal), 1);
-
+  
 
     // After performing our actions, clear the input values and re-render the list
     $('#nameInp').val('');
@@ -166,49 +173,33 @@ $('#deleteButton').on('click', removeName);
 
 //  When the Verify button is pressed,  check to see if the name the user entered is in the employee List.
 const verifyName = function () {
-    // Gathering user input.
+    // Gathering user input and initializing variable 'listStatus'.
     const nameVal = $('#nameInp').val();
-   
+    let listStatus = false;
 
-    // If our studentList includes the input value, add blue class to the body.  ** Need a for loop, compare the oject.name with the imput name.
-    const ex = employeeList.includes(nameVal);
-    
-    if (employeeList.includes(nameVal)) {
-        $('.verifyId').html(`<p>Yes!</p>`);
-        alert('Employee is in the list');
-    } else {
-        $('.verifyId').html(`<p>No!</p>`);
-        alert('Employee is not in the list');
-    
+    // Loop through employeeList and set the listStatus to 'true' or 'false' based on userinput value.
+    for (let i = 0; i < employeeList.length; i++) {    
+        if (employeeList[i].name === nameVal) {
+            listStatus =  true;
+            break
+        } else {
+            listStatus =  false;
+        }
     }
-   
 
-
-
-       
-
-    // for (let i = 0; i < employeeList.length; i++) {
-    //     if (employeeList[i].name === nameVal) {
-    //         console.log('yes');
-    //     else {
-    //         console.log('No');
-    //     }
-            
-    //     }    
-    // }   
-    
-
-
-
-
-    // We use the indexOf method to find the index of the input name
-    // Then we use splice to remove 1 element, starting with that index
-
-    // employeeList.splice(employeeList.indexOf(nameVal), 1);
+    // based on booloean value of listStatus, use html method to display 'yes' or 'no' message.
+    if (listStatus == true) {
+        $('.verifyId').html("Yes, '" + nameVal + "' is in the employee list</p>");
+     
+    } else {
+        $('.verifyId').html("No, '" + nameVal + "' is not in the employee list</p>");
+  
+    }
 
     // After performing our actions, clear the input values and re-render the list
     $('#nameInp').val('');
-    render();
+    // render();
+   
 
 }
 // Listening for user to click the Verify menu option.

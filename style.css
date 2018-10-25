@@ -38,6 +38,7 @@ body {
 .buttons {
  margin-top: 10px;
  margin-bottom: 20px;
+
 }
 
 
@@ -48,10 +49,13 @@ body {
     
 }
 
-/* Remove this */
-.blue {
+
+.verifyId {
     background-color: lightblue;
-}
+    width: 300px;
+    width: auto;
+    font-weight: bold;
+
 
 
 @media screen and (max-height: 450px) {
