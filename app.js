@@ -168,19 +168,24 @@ $('#deleteButton').on('click', removeName);
 const verifyName = function () {
     // Gathering user input.
     const nameVal = $('#nameInp').val();
-    // const officeVal = $('#officeNumInp').val();
-    // const phoneVal = $('#phoneNumInp').val();
-      // If our studentList includes the input value, add blue class to the body
+   
+
+    // If our studentList includes the input value, add blue class to the body.  ** Need a for loop, compare the oject.name with the imput name.
+    const ex = employeeList.includes(nameVal);
     
-      if(employeeList.includes(nameVal)) {
-        $('main').addClass('blue');
-    }    
+    if (employeeList.includes(nameVal)) {
+        $('.verifyId').html(`<p>Yes!</p>`);
+        alert('Employee is in the list');
+    } else {
+        $('.verifyId').html(`<p>No!</p>`);
+        alert('Employee is not in the list');
+    
+    }
+   
 
 
 
-
-
-
+       
 
     // for (let i = 0; i < employeeList.length; i++) {
     //     if (employeeList[i].name === nameVal) {
