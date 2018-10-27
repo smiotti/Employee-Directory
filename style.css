@@ -59,7 +59,7 @@ body {
 #scroll{
     /* margin-top: 30%; */
     white-space: nowrap;
-    overflow: scroll;
+    /* overflow: scroll; */
     direction: rtl;
     height: 28px;
     background-color: lightslategray;
