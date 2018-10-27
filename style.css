@@ -1,5 +1,6 @@
 body {
     font-family: "Lato", sans-serif;
+
 }
 
 .sidenav {
@@ -11,7 +12,6 @@ body {
     left: 0;
     background-color: #111;
     overflow-x: hidden;
-    /* padding-top: 20px; */
     border-style:ridge;
 }
 
@@ -70,14 +70,26 @@ body {
 
 
 .main {
-    margin-left: 225px; /* Same as the width of the sidenav */
+    margin-left: 215px; /* Same as the width of the sidenav */
     margin-top: 20px;
 }
 
+
+/* Footer Styling */
+.footer {
+    position: fixed;
+	height: 158px;
+    bottom: 0;    
+    width: 100%;
+    margin-left: 215px;
+    background-image: url("Empbackground.jpg");
+    
+}
 
 /* Sized for screens up to 450 pxels. */
 @media screen and (max-height: 450px) {
   .sidenav a {font-size: 18px;}
   #scroll {font-size: 10px;}
+  
   
 }
