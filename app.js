@@ -16,8 +16,7 @@ const showView = function () {
     $(`#searchButton`).hide();
     $(`#verifyButton`).hide();
     $(`#updateButton`).hide();
-    $(`.verifyId`).hide();
-
+    $('#scroll').html('V'.fontcolor('black').bold().big() +'iew Employee Directory');
 
 };
 
@@ -31,7 +30,8 @@ const showAddInput = function () {
     $(`#deleteButton`).hide();
     $(`#verifyButton`).hide();
     $(`#updateButton`).hide();
-    $(`.verifyId`).hide();
+    $('#scroll').html('');
+    $('#scroll').html('A'.fontcolor('black').bold().big() +'dd Employees to Directory');
 
 };
 
@@ -45,7 +45,8 @@ const showDelInput = function () {
     $(`#addButton`).hide();
     $(`#verifyButton`).hide();
     $(`#updateButton`).hide();
-    $(`.verifyId`).hide();
+    $('#scroll').html('');
+    $('#scroll').html('D'.fontcolor('black').bold().big() +'elete Employee from Directory');
 };
 
 // Showing the Verify function button and fields
@@ -57,8 +58,8 @@ const showVerifyInput = function () {
     $(`#updateButton`).hide();
     $(`#officeNumInp`).hide();
     $(`#phoneNumInp`).hide();
-    $(`.verifyId`).show();
-    
+    $('#scroll').html('V'.fontcolor('black').bold().big() +'erify Employee in Directory');
+      
 };
 
 
@@ -72,8 +73,28 @@ const showUpdateInput = function () {
     $(`#deleteButton`).hide();
     $(`#addButton`).hide();
     $(`#verifyButton`).hide();
-    $(`.verifyId`).hide();
+    $('#scroll').html('');
+    $('#scroll').html('U'.fontcolor('black').bold().big() +'pdate Employee Information');
 };
+
+
+
+
+let j = 0;
+let txt = 'Welcome to the Employee Directory';
+let speed = 50; /* The speed/duration of the effect in milliseconds */
+
+function typeWriter() {
+    if (j < txt.length) {
+    document.getElementById("scroll").innerHTML += txt.charAt(j);
+    j++;
+    setTimeout(typeWriter, speed);
+  }
+}
+typeWriter(); 
+
+
+
 
 
 
@@ -81,8 +102,7 @@ const showUpdateInput = function () {
  // When the View button is pressed or 'render is called, display all of the employee information in `employeeList` individually in paragraph tags to the div with the class `content`.
 const render = function () {
     $('.content').empty();
-    $('.verifyId').empty();
-
+    
     for (let i = 0; i < employeeList.length; i++) {
         $('.content').append(`<hr><p>${employeeList[i].name}</p>`);
         $('.content').append(`<p>${employeeList[i].officeNum}</p>`);
@@ -95,7 +115,6 @@ render();
 // Listening for user to click the View menu option and then render the employee list.
 $('#view').on('click', showView);
 $('#view').on('click', render);
-
 
 
 
@@ -149,14 +168,13 @@ const removeName = function () {
     for (let i = 0; i < employeeList.length; i++) {
         if (employeeList[i].name === nameVal) {
           employeeList.splice(i, 1);
-          onEmployeetList = true;
-          
+          onEmployeetList = true;  
         }    
     }   
   
     // If selected employee name not in the list, alert user.
     if (onEmployeetList == false) {
-        alert(nameVal + " is not in the employee list!");
+        $('#scroll').html(nameVal.fontcolor("DarkRed").bold() + ', not in the employee list');
         }
 
     // After performing our actions, clear the input values and re-render the list
@@ -171,7 +189,6 @@ const removeName = function () {
 $(`#delete`).on(`click`, showDelInput);
 // Listening for the user to push the Delete buttom.
 $('#deleteButton').on('click', removeName);
-
 
 
 
@@ -195,18 +212,17 @@ const verifyName = function () {
 
     // based on booloean value of listStatus, use html method to display 'yes' or 'no' message.
     if (listStatus == true) {
-        $('.verifyId').html("Yes, '" + nameVal + "' is in the employee list</p>");
+       $('#scroll').html(nameVal.fontcolor("DarkGreen").bold() + ', is in the employee list');
      
     } else {
-        $('.verifyId').html("No, '" + nameVal + "' is not in the employee list</p>");
-  
+       $('#scroll').html(nameVal.fontcolor("DarkRed").bold() + ', not in the employee list');       
+
     }
 
     // After performing our actions, clear the input values and re-render the list
     $('#nameInp').val('');
     // render();
    
-
 }
 // Listening for user to click the Verify menu option.
 $(`#verify`).on(`click`, showVerifyInput);
@@ -216,28 +232,16 @@ $('#verifyButton').on('click', verifyName);
 
 
 
-
 //  When the Update button is pressed, allows the user to input name, office number, and phone number and then update the office number and phone number 
 //  of the employee that matches the input name, and then renders the updated employee list.
 const updateName = function () {
     let onEmployeetList = false;
-
-    // const updateEmployee = {
-    //     name: '',
-    //     officeNum: '',
-    //     phoneNum: ''
-    // };
-
+    
     // Gathering user input.
     const nameVal = $('#nameInp').val();
     const officeVal = $('#officeNumInp').val();
     const phoneVal = $('#phoneNumInp').val();
     
-    // Assigning user input to updateEmployee object.
-    // updateEmployee.name = nameVal;
-    // updateEmployee.officeNum = officeVal ;
-    // updateEmployee.phoneNum = phoneVal;
-
     // If selected empoyee is on the list, update with new employee infomation.
     for (let i = 0; i < employeeList.length; i++) {
         if (employeeList[i].name === nameVal) {
@@ -249,10 +253,11 @@ const updateName = function () {
     }
 
     // If selected employee name not in the list, alert user.
-        if (onEmployeetList == false) {
-        alert(nameVal + " is not in the employee list!");
-     }
-          
+    if (onEmployeetList == false) {
+        $('#scroll').html(nameVal.fontcolor("DarkRed").bold() + ', not in the employee list');
+    }
+    
+
 
     // After performing our actions, clear the input values and re-render the list
      $('#nameInp').val('');
@@ -264,6 +269,4 @@ const updateName = function () {
 // Listening for user to click the Update menu option.
 $(`#update`).on(`click`, showUpdateInput);
 $('#updateButton').on('click', updateName);
-
-
 

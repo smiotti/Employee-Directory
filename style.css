@@ -11,7 +11,8 @@ body {
     left: 0;
     background-color: #111;
     overflow-x: hidden;
-    padding-top: 20px;
+    /* padding-top: 20px; */
+    border-style:ridge;
 }
 
 .sidenav a {
@@ -30,10 +31,23 @@ body {
 .empPhoto {
     height: 60px;
     width: 60px;
+    margin-top:35px;
     margin-left:35px;
     margin-bottom: 10px;
     
 }
+
+
+/* Ab0ut Photo Hover Spin effect*/
+.empPhoto { transition: all 0.3s ease-in-out 0s; }
+
+.empPhoto:hover
+{
+    cursor: default;
+    transform: rotate(360deg);
+    transition: all 0.3s ease-in-out 0s;
+}
+
 
 .buttons {
  margin-top: 10px;
@@ -42,19 +56,28 @@ body {
 }
 
 
+#scroll{
+    /* margin-top: 30%; */
+    white-space: nowrap;
+    overflow: scroll;
+    direction: rtl;
+    height: 28px;
+    background-color: lightslategray;
+    text-decoration: none;
+    border-width:2px;  
+    border-style:ridge;
+    padding: 5px;
+    text-align: left;
+    font-size: 13px;
+    color: whitesmoke;
+    
+}
+
 
 .main {
     margin-left: 225px; /* Same as the width of the sidenav */
     margin-top: 20px;
     
-}
-
-/* class styling for verify response  */
-.verifyId {
-    background-color: lightblue;
-    width: 300px;
-    width: auto;
-    font-weight: bold;
 }
 
 

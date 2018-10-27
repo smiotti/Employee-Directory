@@ -90,7 +90,6 @@ const $ = function (selector) {
     prepend: prepend,
     on: on,
     val: val,
-    // below added by me
     show: show,
     hide: hide
   };

@@ -39,5 +39,3 @@ const employeeList = [{
   phoneNum: '222-789-5231'
 }
 ];
-
-// alert(employeeList.name);
