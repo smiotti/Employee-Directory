@@ -212,7 +212,7 @@ const verifyName = function () {
 
     // based on booloean value of listStatus, use html method to display 'yes' or 'no' message.
     if (listStatus == true) {
-       $('#scroll').html(nameVal.fontcolor("DarkGreen").bold() + ', is in the employee list');
+       $('#scroll').html(nameVal.fontcolor("DarkBlue").bold() + ', is in the employee list');
      
     } else {
        $('#scroll').html(nameVal.fontcolor("DarkRed").bold() + ', not in the employee list');       
