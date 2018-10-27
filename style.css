@@ -34,7 +34,6 @@ body {
     margin-top:35px;
     margin-left:35px;
     margin-bottom: 10px;
-    
 }
 
 
@@ -52,14 +51,11 @@ body {
 .buttons {
  margin-top: 10px;
  margin-bottom: 20px;
-
 }
 
 
 #scroll{
-    /* margin-top: 30%; */
     white-space: nowrap;
-    /* overflow: scroll; */
     direction: rtl;
     height: 50px;
     background-color: lightslategray;
@@ -69,15 +65,13 @@ body {
     padding-top: 10px;
     text-align: center;
     font-size: 13px;
-    color: whitesmoke;
-    
+    color: white;
 }
 
 
 .main {
     margin-left: 225px; /* Same as the width of the sidenav */
     margin-top: 20px;
-    
 }
 
 

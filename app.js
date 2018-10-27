@@ -79,7 +79,7 @@ const showUpdateInput = function () {
 
 
 
-
+// Function for scrolling Welcome text on left nav bar
 let j = 0;
 let txt = 'Welcome to the Employee Directory';
 let speed = 50; /* The speed/duration of the effect in milliseconds */
@@ -92,9 +92,6 @@ function typeWriter() {
   }
 }
 typeWriter(); 
-
-
-
 
 
 
@@ -115,8 +112,6 @@ render();
 // Listening for user to click the View menu option and then render the employee list.
 $('#view').on('click', showView);
 $('#view').on('click', render);
-
-
 
 
 
@@ -142,6 +137,9 @@ const getInputVal = function () {
     // Adding the new employee infomation to the employee list.
     employeeList.push(newEmployee);
 
+    // Alert user of action status.
+    $('#scroll').html('Employee added to Directory');
+
     // After performing our actions, clear the input values and re-render the list
     $('#nameInp').val('');
     $('#officeNumInp').val('');
@@ -153,8 +151,6 @@ const getInputVal = function () {
 $(`#add`).on(`click`, showAddInput);
 // Listening for the user to push the Add buttom.
 $('#addButton').on('click', getInputVal);
-
-
 
 
 
@@ -172,9 +168,12 @@ const removeName = function () {
         }    
     }   
   
+    // Alert user of action status.
+    $('#scroll').html(nameVal.fontcolor("DarkBlue").bold() + ' removed from Directory');
+
     // If selected employee name not in the list, alert user.
     if (onEmployeetList == false) {
-        $('#scroll').html(nameVal.fontcolor("DarkRed").bold() + ', not in the employee list');
+        $('#scroll').html(nameVal.fontcolor("DarkRed").bold() + ' not in the employee list');
         }
 
     // After performing our actions, clear the input values and re-render the list
@@ -189,8 +188,6 @@ const removeName = function () {
 $(`#delete`).on(`click`, showDelInput);
 // Listening for the user to push the Delete buttom.
 $('#deleteButton').on('click', removeName);
-
-
 
 
 
@@ -210,24 +207,22 @@ const verifyName = function () {
         }
     }
 
-    // based on booloean value of listStatus, use html method to display 'yes' or 'no' message.
+    // Based on booloean value of listStatus, use html method to alert user of action status.
     if (listStatus == true) {
-       $('#scroll').html(nameVal.fontcolor("DarkBlue").bold() + ', is in the employee list');
+       $('#scroll').html(nameVal.fontcolor("DarkBlue").bold() + ' is in the employee list');
      
     } else {
-       $('#scroll').html(nameVal.fontcolor("DarkRed").bold() + ', not in the employee list');       
+       $('#scroll').html(nameVal.fontcolor("DarkRed").bold() + ' not in the employee list');       
 
     }
 
     // After performing our actions, clear the input values and re-render the list
     $('#nameInp').val('');
-    // render();
-   
+       
 }
 // Listening for user to click the Verify menu option.
 $(`#verify`).on(`click`, showVerifyInput);
 $('#verifyButton').on('click', verifyName);
-
 
 
 
@@ -252,12 +247,14 @@ const updateName = function () {
         }
     }
 
+    // Alert user of action staus.
+    $('#scroll').html('Directory has been updated');
+
     // If selected employee name not in the list, alert user.
     if (onEmployeetList == false) {
-        $('#scroll').html(nameVal.fontcolor("DarkRed").bold() + ', not in the employee list');
+        $('#scroll').html(nameVal.fontcolor("DarkRed").bold() + ' is not in the Directory');
     }
     
-
 
     // After performing our actions, clear the input values and re-render the list
      $('#nameInp').val('');

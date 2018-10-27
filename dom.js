@@ -63,14 +63,14 @@ const $ = function (selector) {
     }
   }
 
-  // I added this
+  // added show funtion to display element
   const show = function() {
     for (let i = 0; i < nodeList.length; i++) {
       nodeList[i].style.display = '';
     }
   }
 
-  // I added this
+  // added show funtion to hide element
   const hide = function() {
     for (let i = 0; i < nodeList.length; i++) {
       nodeList[i].style.display = 'none';
