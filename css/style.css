@@ -75,17 +75,6 @@ body {
 }
 
 
-/* Footer Styling */
-.footer {
-    position: fixed;
-	height: 158px;
-    bottom: 0;    
-    width: 100%;
-    margin-left: 215px;
-    background-image: url("Empbackground.jpg");
-    
-}
-
 /* Sized for screens up to 450 pxels. */
 @media screen and (max-height: 450px) {
   .sidenav a {font-size: 18px;}
